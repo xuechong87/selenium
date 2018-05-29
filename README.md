@@ -7,10 +7,14 @@ selenium 学习
 
 * 下载python
 
+	windows中下载msi安装包即可
+
 	[https://www.python.org/](https://www.python.org/)
 
 
 * 安装selenium
+	
+	在windows powershell中执行命令
 	
 	*pip install -U selenium*
 
@@ -18,27 +22,47 @@ selenium 学习
 	在Python 2 >=2.7.9 或 Python 3 >=3.4 版本以上pip工具会集成在安装包中 
 	如果你当前pyton版本低于以上版本 请先升级
 
+
 * 安装ChromeDriver
 
 	[ChromeDriver项目地址](https://sites.google.com/a/chromium.org/chromedriver/home) (需要科学上网)
 
 	将下载后的文件放入chrome安装目录下 
-	例如 :C:\Program Files (x86)\Google\Chrome\Application
+	例如 : *C:\Program Files (x86)\Google\Chrome\Application*
+
+
+	*chromedriver版本与chrome版本应互相对应 
+	可以查看[此处](https://sites.google.com/a/chromium.org/chromedriver/downloads)(需要科学上网)找到与自己当前chrome版本相对的版本*
+
+
 
 ## hello world
 	
 ```python
 
+	#coding:utf-8
+
 	import time
-	from selenium import webdriver
+	from selenium import webdriver #导入需要的包
 
-	driver = webdriver.Chrome('C:\Program Files (x86)\Google\Chrome\Application\chromedriver')  
-	driver.get('https://www.eastlending.com/')
-	titleEle = driver.find_element_by_tag_name('base')
+	#初始化浏览器
+	driver = webdriver.Chrome('C:\Program Files (x86)\Google\Chrome\Application\chromedriver')  # 写地址
+	driver.get('https://www.eastlending.com/') #打开一个网址
 
-	print(titleEle.get_attribute('href'))
-	time.sleep(5)
-	driver.quit()
+	#寻找base标签 并打印其中的href
+	baseEle = driver.find_element_by_tag_name('base')
+	print('base href is :' + baseEle.get_attribute('href')) 
+
+	#打印title中的内容
+	titleEle = driver.find_element_by_tag_name('title')
+	titleStr = titleEle.parent.title
+
+	print('title is :' + titleStr)
+
+	# time.sleep(1)
+	driver.quit() #关闭浏览器
+
 	print('press any key')
 	input()
+
 ```
