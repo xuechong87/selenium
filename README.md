@@ -27,7 +27,7 @@ selenium 学习
 
 ## hello world
 	
-	```python
+```pytthon
 
 	import time
 	from selenium import webdriver
@@ -41,4 +41,4 @@ selenium 学习
 	driver.quit()
 	print('press any key')
 	input()
-	```
+```
