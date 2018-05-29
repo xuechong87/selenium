@@ -27,7 +27,7 @@ selenium 学习
 
 ## hello world
 	
-```pytthon
+```python
 
 	import time
 	from selenium import webdriver
