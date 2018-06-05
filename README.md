@@ -31,6 +31,9 @@ selenium 学习
 	例如 : *C:\Program Files (x86)\Google\Chrome\Application*
 
 
+	mac/linux放在/usr/bin目录下
+
+
 	*chromedriver版本与chrome版本应互相对应 
 	可以查看[此处](https://sites.google.com/a/chromium.org/chromedriver/downloads)(需要科学上网)找到与自己当前chrome版本相对的版本*
 
