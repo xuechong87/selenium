@@ -12,12 +12,14 @@ driver = webdriver.Chrome()
 driver.get('http://dfjktest.eastlending.cn/portal/login')
 
 
+#输入用户名密码
 usrEle = driver.find_element_by_name('username')
 usrEle.send_keys('admin')
 
 pwdEle = driver.find_element_by_name('password')
 pwdEle.send_keys('asdasd')
 
+点击提交
 loginBtn = driver.find_element_by_id('login-btn')
 loginBtn.click()
 
