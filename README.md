@@ -1,6 +1,5 @@
 # selenium
-
-selenium 学习
+======
 
 ## python环境与selenium安装
 
@@ -67,5 +66,46 @@ selenium 学习
 
 	print('press any key')
 	input()
+
+```
+
+## 单元测试
+
+```python
+	# coding:utf-8
+	import time
+	import unittest
+	
+	from selenium import webdriver
+	
+	
+	class IndexAlive(unittest.TestCase):
+	
+		#准备工作写在此处
+		def setUp(self):
+			self.driver = webdriver.Chrome()
+			pass
+	
+		def testIndexAlive(self): #测试方法必须以test开头
+			driver = self.driver
+			driver.get('https://www.eastlending.com/')
+	
+			titleEle = driver.find_element_by_tag_name('title')
+			titleStr = titleEle.parent.title
+	
+			print('title is :' + titleStr)
+			assert u"东方汇" in driver.title #通过断言判断功能是否按预期进行
+			pass
+	
+		#after test 释放资源写在此处
+		def tearDown(self):
+			self.driver.quit()
+			pass
+		pass
+	
+	#程序入口
+	if __name__ == '__main__':
+		unittest.main()
+
 
 ```
