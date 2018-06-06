@@ -20,7 +20,7 @@ selenium 学习
 
 
 	在Python 2 >=2.7.9 或 Python 3 >=3.4 版本以上pip工具会集成在安装包中 
-	如果你当前pyton版本低于以上版本 请先升级
+	如果你当前python版本低于以上版本 请先升级
 
 
 * 安装ChromeDriver

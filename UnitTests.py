@@ -1,7 +1,7 @@
-#coding:utf-8
+# coding:utf-8
 import time
 import unittest
-from unittest import TestCase
+# from unittest import TestCase
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -11,8 +11,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 
-class IndexAlive(TestCase):
+class IndexAlive(unittest.TestCase):
 
+	#准备工作写在此处
 	def setUp(self):
 		self.driver = webdriver.Chrome()
 		pass
@@ -25,9 +26,23 @@ class IndexAlive(TestCase):
 		titleStr = titleEle.parent.title
 
 		print('title is :' + titleStr)
-		assert u"东方汇" in driver.title
+		assert u"东方汇" in driver.title #通过断言判断功能是否按预期进行
 		pass
 
+	
+
+	#after test 释放资源写在此处
+	def tearDown(self):
+		self.driver.quit()
+		pass
+	pass
+
+
+class Login(unittest.TestCase):
+
+	def setUp(self):
+		self.driver = webdriver.Chrome()
+		pass
 	def testLogin(self):
 		driver = self.driver
 
@@ -44,7 +59,6 @@ class IndexAlive(TestCase):
 		loginBtn = driver.find_element_by_id('login-btn')
 		loginBtn.click()
 
-
 		try:
 			#根据title 判断登录是否成功
 			element = WebDriverWait(driver,1).until(EC.title_contains("Management"))
@@ -59,11 +73,6 @@ class IndexAlive(TestCase):
 
 		pass
 
-
-	def tearDown(self):
-		self.driver.quit()
-		pass
-	pass
-
+#程序入口
 if __name__ == '__main__':
 	unittest.main()
