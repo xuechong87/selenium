@@ -19,12 +19,13 @@ usrEle.send_keys('admin')
 pwdEle = driver.find_element_by_name('password')
 pwdEle.send_keys('asdasd')
 
-点击提交
+#点击提交
 loginBtn = driver.find_element_by_id('login-btn')
 loginBtn.click()
 
 
 try:
+	#根据title 判断登录是否成功
 	element = WebDriverWait(driver,1).until(EC.title_contains("Management"))
     
 	print("login suc")
