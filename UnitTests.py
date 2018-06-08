@@ -14,6 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class IndexAlive(unittest.TestCase):
 
 	#准备工作写在此处
+	#setUp 方法是初始化的一部分, 该方法会在该测试类中的每一个测试方法被执行前都执行一遍
 	def setUp(self):
 		self.driver = webdriver.Chrome()
 		pass
@@ -29,8 +30,6 @@ class IndexAlive(unittest.TestCase):
 		assert u"东方汇" in driver.title #通过断言判断功能是否按预期进行
 		pass
 
-	
-
 	#after test 释放资源写在此处
 	def tearDown(self):
 		self.driver.quit()
@@ -43,6 +42,7 @@ class Login(unittest.TestCase):
 	def setUp(self):
 		self.driver = webdriver.Chrome()
 		pass
+
 	def testLogin(self):
 		driver = self.driver
 
@@ -53,7 +53,7 @@ class Login(unittest.TestCase):
 		usrEle.send_keys('admin')
 
 		pwdEle = driver.find_element_by_name('password')
-		pwdEle.send_keys('asdasd')
+		pwdEle.send_keys('ddddd')
 
 		#点击提交
 		loginBtn = driver.find_element_by_id('login-btn')
@@ -72,6 +72,31 @@ class Login(unittest.TestCase):
 		assert u"Management" in driver.title
 
 		pass
+
+
+	@unittest.expectedFailure
+	def testLoginFail(self):
+		driver = self.driver
+
+		driver.get('http://dfjktest.eastlending.cn/portal/login')
+
+		#输入用户名密码
+		usrEle = driver.find_element_by_name('username')
+		usrEle.send_keys('admin')
+
+		pwdEle = driver.find_element_by_name('password')
+		pwdEle.send_keys('asdasd')
+
+		#点击提交
+		loginBtn = driver.find_element_by_id('login-btn')
+		loginBtn.click()
+		pass
+
+
+	def tearDown(self):
+		self.driver.quit()
+		pass
+	pass
 
 #程序入口
 if __name__ == '__main__':
