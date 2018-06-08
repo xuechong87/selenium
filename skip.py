@@ -10,7 +10,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-
 class IndexAlive(unittest.TestCase):
 	conda = 1
 	#准备工作写在此处
@@ -29,30 +28,17 @@ class IndexAlive(unittest.TestCase):
 		print('title is :' + titleStr)
 		assert u"东方汇" in driver.title #通过断言判断功能是否按预期进行
 		pass
+
 	#跳过
 	@unittest.skip(u'跳过')
 	def testOther(self): 
-		driver = self.driver
-		driver.get('https://www.eastlending.com/')
-
-		titleEle = driver.find_element_by_tag_name('title')
-		titleStr = titleEle.parent.title
-
-		print('title is :' + titleStr)
-		assert u"东方汇" in driver.title #通过断言判断功能是否按预期进行
+		print('ski1')
 		pass
 
 	#跳过
 	@unittest.skipIf(conda==1,u'跳过')
 	def testSkipA(self): 
-		driver = self.driver
-		driver.get('https://www.eastlending.com/')
-
-		titleEle = driver.find_element_by_tag_name('title')
-		titleStr = titleEle.parent.title
-
-		print('title is :' + titleStr)
-		assert u"东方汇" in driver.title #通过断言判断功能是否按预期进行
+		print('ski2')
 		pass
 
 	#after test 释放资源写在此处
@@ -60,7 +46,6 @@ class IndexAlive(unittest.TestCase):
 		self.driver.quit()
 		pass
 	pass
-
 
 
 #程序入口
