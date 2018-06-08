@@ -12,7 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class IndexAlive(unittest.TestCase):
-
+	conda = 1
 	#准备工作写在此处
 	#setUp 方法是初始化的一部分, 该方法会在该测试类中的每一个测试方法被执行前都执行一遍
 	def setUp(self):
@@ -31,7 +31,20 @@ class IndexAlive(unittest.TestCase):
 		pass
 	#跳过
 	@unittest.skip(u'跳过')
-	def testOther(self): #测试方法必须以test开头
+	def testOther(self): 
+		driver = self.driver
+		driver.get('https://www.eastlending.com/')
+
+		titleEle = driver.find_element_by_tag_name('title')
+		titleStr = titleEle.parent.title
+
+		print('title is :' + titleStr)
+		assert u"东方汇" in driver.title #通过断言判断功能是否按预期进行
+		pass
+
+	#跳过
+	@unittest.skipIf(conda==1,u'跳过')
+	def testSkipA(self): 
 		driver = self.driver
 		driver.get('https://www.eastlending.com/')
 
