@@ -41,6 +41,15 @@ class IndexAlive(unittest.TestCase):
 		print('ski2')
 		pass
 
+
+	@unittest.skipUnless(conda==0, u"除数为0")
+	def testSkipB(self):
+		print(conda)
+
+	@unittest.expectedFailure
+	def testFail(self):
+		self.assertTrue(conda != conda)
+
 	#after test 释放资源写在此处
 	def tearDown(self):
 		self.driver.quit()
